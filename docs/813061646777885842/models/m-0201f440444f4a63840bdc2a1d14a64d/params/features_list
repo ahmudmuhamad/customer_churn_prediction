@@ -1,0 +1,1 @@
+["total_events", "n_sessions", "unique_songs", "unique_artists", "total_length", "avg_length", "avg_itemInSession", "num_cancellation_events", "num_thumbup", "num_thumbdown", "num_home", "num_nextsong", "activity_span_seconds", "last_level", "last_location"]

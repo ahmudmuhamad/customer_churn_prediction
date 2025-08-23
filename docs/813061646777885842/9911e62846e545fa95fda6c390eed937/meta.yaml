@@ -1,0 +1,14 @@
+artifact_uri: file:///E:/customer_churn_prediction/reports/figures/813061646777885842/9911e62846e545fa95fda6c390eed937/artifacts
+end_time: 1755959204561
+entry_point_name: ''
+experiment_id: '813061646777885842'
+lifecycle_stage: active
+run_id: 9911e62846e545fa95fda6c390eed937
+run_name: xgb_userlevel_extended
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1755959191523
+status: 3
+tags: []
+user_id: Future

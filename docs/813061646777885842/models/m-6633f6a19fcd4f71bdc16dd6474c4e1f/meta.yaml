@@ -1,0 +1,10 @@
+artifact_location: file:///E:/customer_churn_prediction/reports/figures/813061646777885842/models/m-6633f6a19fcd4f71bdc16dd6474c4e1f/artifacts
+creation_timestamp: 1755957206173
+experiment_id: '813061646777885842'
+last_updated_timestamp: 1755957211771
+model_id: m-6633f6a19fcd4f71bdc16dd6474c4e1f
+model_type: ''
+name: model
+source_run_id: ef636a0dd7f54496af4686422f28baef
+status: 2
+status_message: null
