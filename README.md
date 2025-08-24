@@ -23,7 +23,6 @@ The final model is trained using state-of-the-art algorithms, including XGBoost,
 ├── notebooks/                  # Jupyter notebooks for EDA and experimentation
 ├── src/                        # Source code
 │   ├── churn/                  # Churn prediction modules
-│   ├── create.py               # Main script for model creation
 ├── environment.yml             # Conda environment specification
 ├── requirements.txt            # Python dependencies
 ├── README.md                   # Project documentation
@@ -135,3 +134,4 @@ For questions or contributions, please open an issue or submit a pull request.
 
 
         
+
