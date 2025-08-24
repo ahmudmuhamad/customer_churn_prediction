@@ -1,5 +1,5 @@
 from typing import List, Dict, Union
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, model_validator
 
 
 class FeatureSet(BaseModel):
@@ -8,9 +8,16 @@ class FeatureSet(BaseModel):
 
 
 class PredictRequest(BaseModel):
-    # Accept either a single record or a list (batch)
-    data: Union[FeatureSet, List[FeatureSet]] = Field(..., description="Single feature set or list of feature sets")
-    threshold: float = Field(0.5, ge=0.0, le=1.0, description="Classification threshold")
+    features: Union[Dict[str, float], List[Dict[str, float]]] = Field(..., description="Feature dict or list of feature dicts")
+    threshold: float = Field(0.5, ge=0.0, le=1.0)
+
+    @model_validator(mode='before')
+    @classmethod
+    def accept_data_or_features(cls, values):
+        # allow clients to send either "data" or "features"
+        if "data" in values and "features" not in values:
+            values["features"] = values.pop("data")
+        return values
 
 
 class PredictResponse(BaseModel):
