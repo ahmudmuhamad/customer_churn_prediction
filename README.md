@@ -27,12 +27,13 @@ The final model is trained using state-of-the-art algorithms, including XGBoost,
 ├── environment.yml             # Conda environment specification
 ├── requirements.txt            # Python dependencies
 ├── README.md                   # Project documentation
+
 ```
 
 ## Getting Started
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/customer_churn_prediction.git
+git clone https://github.com/ahmudmuhamad/customer_churn_prediction.git
 cd customer_churn_prediction
 ```
 
@@ -48,9 +49,78 @@ If you prefer using pip:
 pip install -r requirements.txt
 ```
 
-### 4. Run the Project
-- Use the scripts in `src/` or Jupyter notebooks in `notebooks/` for data processing, training, and evaluation.
-- Model artifacts and evaluation results are saved in `models/` and `docs/` respectively.
+### 4. Run the Server
+To start the FastAPI server for serving predictions:
+```bash
+uvicorn churn.api.main:app --app-dir src --reload --host 0.0.0.0 --port 8000
+```
+
+## API Endpoints
+
+- **POST /predict/**  
+  Request: JSON with features (single dict or list of dicts) and optional threshold  
+  Response: Predictions and probabilities
+- **GET /health**  
+  Returns: `{ "status": "ok" }` (basic health check)
+- **GET /ready**  
+  Returns: `{ "ready": true/false }` (model readiness status)
+
+### Example: Using the Predict Endpoint
+Send a POST request to `/predict/` with the following JSON body:
+```json
+{
+  "data": {
+    "total_events": 100,
+    "n_sessions": 10,
+    "unique_songs": 20,
+    "unique_artists": 5,
+    "total_length": 3000,
+    "avg_length": 200,
+    "avg_itemInSession": 2,
+    "num_cancellation_events": 0,
+    "num_thumbup": 5,
+    "num_thumbdown": 1,
+    "num_home": 10,
+    "num_nextsong": 50,
+    "activity_span_seconds": 86400,
+    "last_level": 2,
+    "last_location": 1
+  },
+  "threshold": 0.5
+}
+```
+Example using `curl`:
+```bash
+curl -X POST "http://localhost:8000/predict/" \
+     -H "Content-Type: application/json" \
+     -d '{
+           "data": {
+             "total_events": 100,
+             "n_sessions": 10,
+             "unique_songs": 20,
+             "unique_artists": 5,
+             "total_length": 3000,
+             "avg_length": 200,
+             "avg_itemInSession": 2,
+             "num_cancellation_events": 0,
+             "num_thumbup": 5,
+             "num_thumbdown": 1,
+             "num_home": 10,
+             "num_nextsong": 50,
+             "activity_span_seconds": 86400,
+             "last_level": 2,
+             "last_location": 1
+           },
+           "threshold": 0.5
+         }'
+```
+Response:
+```json
+{
+  "predictions": [0],
+  "probabilities": [0.23]
+}
+```
 
 ## Documentation & Reports
 - Detailed experiment results, error analysis, and prediction outputs are available in the `docs/` folder.
@@ -61,6 +131,7 @@ This project is licensed under the Apache License 2.0. See the [LICENSE](LICENSE
 
 ## Contact
 For questions or contributions, please open an issue or submit a pull request.
+```
 
 
         
