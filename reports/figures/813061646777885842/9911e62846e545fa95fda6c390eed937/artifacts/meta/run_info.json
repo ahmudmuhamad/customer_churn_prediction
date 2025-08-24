@@ -1,0 +1,24 @@
+{
+  "run_id": "9911e62846e545fa95fda6c390eed937",
+  "n_train": 225,
+  "n_test": 224,
+  "features": [
+    "total_events",
+    "n_sessions",
+    "unique_songs",
+    "unique_artists",
+    "total_length",
+    "avg_length",
+    "avg_itemInSession",
+    "num_cancellation_events",
+    "num_thumbup",
+    "num_thumbdown",
+    "num_home",
+    "num_nextsong",
+    "activity_span_seconds",
+    "last_level",
+    "last_location"
+  ],
+  "mean_cv_best_iter": 66,
+  "mean_cv_best_thresh": 0.47677208483219147
+}
